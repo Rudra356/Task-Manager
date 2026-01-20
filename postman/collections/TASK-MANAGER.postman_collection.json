@@ -1,0 +1,473 @@
+{
+  "info": {
+    "_postman_id": "8e233834-08f2-4e85-a10a-714b3c55bf5d",
+    "name": "TASK-MANAGER",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "User-Register",
+          "id": "23ba2e54-8854-4bca-b75b-0337b3819c81",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Rudra\",\r\n  \"email\": \"rudra@test.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User-Login",
+          "id": "774bf5ad-bf4d-4f6e-8fd9-4fa20f43f6a9",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"raj@test.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch-User-Info",
+          "id": "e24abea3-30d5-468c-b554-5027138f8e08",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZjM5YzFmNDk1MjhmMDkxYTRlZiIsImlhdCI6MTc2ODkyOTA1OCwiZXhwIjoxNzY5MDE1NDU4fQ.ImQvZqj5xAhKlAurf86ENFycQ2ShTv62lgmmkAe5q3I",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/auth/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "b73d51a0-e4b8-43d0-bcba-f8e19c9054ee"
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Create-Task",
+          "id": "8c1e3b11-a3af-4a13-9517-b4b79024b951",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"Finish Assignment\",\r\n  \"description\": \"Complete MERN task system\",\r\n  \"priority\": \"high\",\r\n  \"dueDate\": \"2026-01-25\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-All-Task",
+          "id": "e52c7c96-968c-409f-9a2e-da5df129ec34",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZjRlYzFmNDk1MjhmMDkxYTRmMiIsImlhdCI6MTc2ODkyOTQwMiwiZXhwIjoxNzY5MDE1ODAyfQ.C4TM4IP_nzSmUJnzDQJ3QV74WEivuY3JF-5ggiygLM8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update-Task",
+          "id": "907b542b-ca49-438f-a320-06f04afea94f",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZjRlYzFmNDk1MjhmMDkxYTRmMiIsImlhdCI6MTc2ODkwNjcxNiwiZXhwIjoxNzY4OTkzMTE2fQ.cJ79xUuPhIq0_mZTgOZGewHVZ8lZGP8b4TAlGyF9wP4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"title\": \"About to finish Assignment\",\r\n  \"description\": \"Complete MERN task system\",\r\n  \"priority\": \"high\",\r\n  \"dueDate\": \"2026-01-25\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/tasks/696f610dc1f49528f091a506",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "696f610dc1f49528f091a506"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete-Task",
+          "id": "47ee5b1e-6e9e-4278-a8d1-40d012f9f9bd",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZjRlYzFmNDk1MjhmMDkxYTRmMiIsImlhdCI6MTc2ODkwNjcxNiwiZXhwIjoxNzY4OTkzMTE2fQ.cJ79xUuPhIq0_mZTgOZGewHVZ8lZGP8b4TAlGyF9wP4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks/696fbbd1b43d775284706d60",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "696fbbd1b43d775284706d60"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get-Task-By-Id",
+          "id": "50fbfed9-ea5f-4c3f-a3f0-34661c13a091",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks/696fbbd1b43d775284706d60",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "696fbbd1b43d775284706d60"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete-Trigger",
+          "id": "fce1c95b-434c-4992-b7db-dcb02d64cdd7",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks/696fbf09b43d775284706d65/complete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks",
+                "696fbf09b43d775284706d65",
+                "complete"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search-Task",
+          "id": "cd368522-0da1-45be-ba4f-b67deda96313",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks?search=eating",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "eating"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter_Task",
+          "id": "b20f09db-deb6-4325-9158-4913a3de677b",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks?status=pending",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sort-Task",
+          "id": "a8075097-ec0b-46e9-ac06-67f14f9853be",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/tasks?sortBy=dueDate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "sortBy",
+                  "value": "dueDate"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "a882a677-76ce-442c-8305-ec44da194976"
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Dashboard",
+          "id": "16f53e05-09b5-4a01-9160-2f18690cac67",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NmY1ZDM3NjQ2YzRlYWE1YjU1ZjZmNyIsImlhdCI6MTc2ODkwNjA0NCwiZXhwIjoxNzY4OTkyNDQ0fQ.daI-ZvWeGJVZy0bqzi3V-PNuQQ9MEDkPtsKmh-A7x9M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/dashboard/stats",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "dashboard",
+                "stats"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "4f1011d5-80b6-44d7-a5d1-8bc595fc0724"
+    }
+  ]
+}

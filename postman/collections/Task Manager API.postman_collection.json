@@ -1,0 +1,381 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "name": "Task Manager API",
+    "description": "API collection for the Task Manager backend application. This API provides endpoints for user authentication, task management, and dashboard statistics.\n\nBase URL: `{{baseUrl}}` (default: [http://localhost:5000](http://localhost:5000))\n\nAuthentication: Most endpoints require a Bearer token in the Authorization header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "id": "c458a101-4062-4547-a968-5b2098e0f560",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            },
+            "description": "Register a new user account."
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "id": "65167b14-ad51-4f13-ad4f-4368d15b33bc",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            },
+            "description": "Login with email and password. Returns a JWT token on success."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Profile",
+          "id": "fb592238-d5a4-4b1b-9e3b-3400db90e6cc",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "profile"
+              ]
+            },
+            "description": "Get the logged-in user's profile information. Requires authentication."
+          },
+          "response": []
+        }
+      ],
+      "id": "29571055-8439-4530-9eee-aa2d1176a814",
+      "description": "Authentication endpoints for user registration, login, and profile management."
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Create Task",
+          "id": "cf0d275b-7e0a-41e5-bf72-9617f8d15f2f",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Complete project documentation\",\n    \"description\": \"Write comprehensive documentation for the API\",\n    \"priority\": \"high\",\n    \"dueDate\": \"2025-02-01\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tasks"
+              ]
+            },
+            "description": "Create a new task for the authenticated user."
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Tasks",
+          "id": "54c4ea87-fb8d-47fb-afcb-3d11dda14032",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tasks"
+              ]
+            },
+            "description": "Get all tasks for the authenticated user. Supports query parameters for filtering."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Task by ID",
+          "id": "64336123-c3dd-4255-8b8d-7bd67dd4def6",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tasks",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Task ID"
+                }
+              ]
+            },
+            "description": "Get a specific task by its ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Task",
+          "id": "afa5e656-cb2e-49cb-8df9-5595d45581a2",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Updated task title\",\n    \"description\": \"Updated task description\",\n    \"priority\": \"medium\",\n    \"status\": \"in-progress\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tasks",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Task ID"
+                }
+              ]
+            },
+            "description": "Update an existing task by its ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Task",
+          "id": "77a0735a-4346-432c-9ddb-3779e0cfc5d8",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tasks",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Task ID"
+                }
+              ]
+            },
+            "description": "Delete a task by its ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Mark Task Complete",
+          "id": "ecf1dd34-2cdb-4c97-bce7-5b0258483fc1",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/:id/complete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tasks",
+                ":id",
+                "complete"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "",
+                  "description": "Task ID"
+                }
+              ]
+            },
+            "description": "Mark a specific task as completed."
+          },
+          "response": []
+        }
+      ],
+      "id": "7966a3de-044b-40b9-add3-5753a1f9c788",
+      "description": "Task management endpoints for creating, reading, updating, and deleting tasks."
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Stats",
+          "id": "29c659e8-d45a-47be-9f33-772e31fe89b1",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}",
+                "description": "JWT token obtained from login"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "stats"
+              ]
+            },
+            "description": "Get dashboard statistics including priority distribution, completion progress, and upcoming deadlines for the authenticated user."
+          },
+          "response": []
+        }
+      ],
+      "id": "f7188161-9fab-4f86-9fe7-704e2ec27ebc",
+      "description": "Dashboard endpoints for viewing task statistics and analytics."
+    },
+    {
+      "name": "Health Check",
+      "id": "d5dbeef7-5d4d-4d00-957f-6a72fbe54059",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ""
+          ]
+        },
+        "description": "Health check endpoint to verify the API is running."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "id": "163a0540-1ebb-4408-a060-fe7decffbd05",
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "id": "59afaaac-7167-4450-b142-21c1dd42129a",
+      "key": "authToken",
+      "value": ""
+    }
+  ]
+}
