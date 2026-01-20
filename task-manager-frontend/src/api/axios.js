@@ -2,8 +2,9 @@ import axios from "axios";
 
 // API instance
 const api = axios.create({
-  baseURL: "http://localhost:5000/api"
+  baseURL: "https://task-manager-rzuu.onrender.com/api"
 });
+
 
 // Add JWT to every request
 api.interceptors.request.use((config) => {
