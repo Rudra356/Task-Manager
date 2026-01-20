@@ -36,9 +36,13 @@ The backend is fully functional and has been tested locally as well as on the de
 
 ## Environment Variables
 
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+PORT=5000 <br>
+MONGO_URI=mongodb+srv://rudra:rudra@cluster1-task-manager.rom9vjv.mongodb.net/?appName=Cluster1-Task-Manager<br>
+JWT_SECRET=taskmanager_secret
+
+## Live on
+
+<a href = "https://task-manager-rzuu.onrender.com/"> Click here </a>
 
 ## Run Locally
 
